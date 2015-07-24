@@ -17,3 +17,8 @@ end
 def remove_xml_whitespace(xml)
   xml.gsub(/>\s*</, "><").strip
 end
+
+def load_env
+  require 'dotenv'
+  Dotenv.load
+end
