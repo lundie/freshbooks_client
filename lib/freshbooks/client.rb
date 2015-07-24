@@ -1,5 +1,4 @@
 require 'multi_xml'
-require 'http'
 
 module Freshbooks
   class Client
@@ -15,11 +14,7 @@ module Freshbooks
       yield(self) if block_given?
     end
 
-    def post(params = {})
-      http = Net::HTTP.new(URI.parse())
-    end
-
-    def to_xml(params_hash = {})
+    def self.to_xml(params_hash = {})
       xml_template = <<-XML
 <?xml version="1.0" encoding="utf-8"?>
 <request method="#{params_hash[:method]}">
@@ -35,7 +30,7 @@ module Freshbooks
       xml_template.gsub('<contents>', xml_elements.join(""))
     end
 
-    def parse(xml_content)
+    def self.parse(xml_content)
       MultiXml.parse(xml_content)['response'].map { |tags| tags.map { |tag| tag.is_a?(String) ? tag.strip : tag } }.to_h
     end
   end

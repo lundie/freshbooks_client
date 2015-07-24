@@ -1,27 +1,23 @@
 require 'test_helper'
 
 describe Freshbooks::Client do
-  before do
-    @client = Freshbooks::Client.new
-  end
-
-  describe '#to_xml' do
+  describe '.to_xml' do
     it 'should convert a hash to XML' do
       expected = { method: 'foo.bar', foo: 'bar' }
-      assert_equal fixture('from_hash.xml'), @client.to_xml(expected)
+      assert_equal fixture('from_hash.xml'), Freshbooks::Client.to_xml(expected)
     end
   end
 
-  describe '#parse' do
+  describe '.parse' do
     it 'parses XML into a hash' do
       expected = { "foo" => "bar", "status" => "ok" }
-      actual = @client.parse fixture('to_hash.xml')
+      actual = Freshbooks::Client.parse fixture('to_hash.xml')
       assert_equal expected, actual
     end
 
     it 'parses nested XML into a hash' do
       expected = { "foo" => { "bar" => "baz" }, "status" => "ok" }
-      actual = @client.parse fixture('nested.xml')
+      actual = Freshbooks::Client.parse fixture('nested.xml')
       assert_equal expected, actual
     end
   end
