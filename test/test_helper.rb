@@ -13,3 +13,7 @@ end
 def fixture(file)
   File.read(fixtures_path + '/' + file)
 end
+
+def remove_xml_whitespace(xml)
+  xml.gsub(/>\s*</, "><").strip
+end

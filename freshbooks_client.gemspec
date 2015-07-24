@@ -16,9 +16,10 @@ Gem::Specification.new do |spec|
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   spec.require_paths = ["lib"]
 
-  spec.add_runtime_dependency "virtus"
+  # spec.add_runtime_dependency "virtus"
   spec.add_runtime_dependency "multi_xml"
-  spec.add_runtime_dependency "http"
+  spec.add_runtime_dependency "hashie"
+  spec.add_runtime_dependency "faraday_middleware"
 
   spec.add_development_dependency "bundler", "~> 1.10"
   spec.add_development_dependency "pry"
