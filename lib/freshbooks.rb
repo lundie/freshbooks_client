@@ -1,5 +1,2 @@
-require "freshbooks/version"
-
-module Freshbooks
-  # Your code goes here...
-end
+require 'freshbooks/version'
+require 'freshbooks/client'
