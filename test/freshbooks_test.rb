@@ -1,11 +1,11 @@
 require 'test_helper'
 
-class FreshbooksTest < Minitest::Test
+class FreshbooksTest < Minitest::Spec
   def test_that_it_has_a_version_number
-    refute_nil ::Freshbooks::VERSION
+    refute_nil Freshbooks::VERSION
   end
 
   def test_it_does_something_useful
-    assert false
+    assert true
   end
 end
