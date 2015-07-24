@@ -17,7 +17,7 @@ module Freshbooks
     end
 
     def projects
-      Freshbooks::API::Projects.new.list
+      Freshbooks::API::Project.new(options)
     end
 
     # Send post request to the API.
@@ -27,7 +27,7 @@ module Freshbooks
       @connection = Faraday.new(@api_url) do |conn|
         conn.use FaradayMiddleware::Mashify
         conn.response :xml
-        conn.basic_auth token, 'X'
+        conn.basic_auth @token, 'X'
         conn.adapter Faraday.default_adapter
       end
 
@@ -83,6 +83,13 @@ module Freshbooks
         built += object.to_s
       end
       built
+    end
+
+    def options
+      {
+        api_url: @api_url,
+        token: @token
+      }
     end
   end
 end

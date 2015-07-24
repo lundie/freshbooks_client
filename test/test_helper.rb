@@ -22,3 +22,11 @@ def load_env
   require 'dotenv'
   Dotenv.load
 end
+
+def is_instance(meth, inst)
+  describe "##{meth}" do
+    it "should return a Freshbooks::API::#{inst} instance" do
+      assert @client.projects.is_a?(eval("Freshbooks::API::#{inst}"))
+    end
+  end
+end

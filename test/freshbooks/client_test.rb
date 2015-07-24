@@ -2,13 +2,39 @@ require 'test_helper'
 
 describe Freshbooks::Client do
   before do
+    @base_url = load_env['BASE_URL']
+    @token = load_env['TOKEN']
     @client = Freshbooks::Client.new do |config|
-      config.api_url = ENV['BASE_URL']
-      config.token = ENV['TOKEN']
+      config.api_url = @base_url
+      config.token = @token
     end
   end
 
-  describe 'it should '
+  # see test_helper
+  # checks to see if client.:first_param returns an instance of :second_param
+  is_instance 'callbacks', 'Callback'
+  is_instance 'categories', 'Category'
+  is_instance 'clients', 'Client'
+  is_instance 'estimates', 'Estimate'
+  is_instance 'expenses', 'Expenses'
+  is_instance 'gateway', 'Gateway'
+  is_instance 'invoices', 'Invoice'
+  is_instance 'items', 'Item'
+  is_instance 'languages', 'Language'
+  is_instance 'payments', 'Payment'
+  is_instance 'projects', 'Project'
+  is_instance 'receipts', 'Receipt'
+  is_instance 'recurring', 'Recurring'
+  is_instance 'staff', 'Staff'
+  is_instance 'system', 'System'
+  is_instance 'tasks', 'Task'
+  is_instance 'taxes', 'Tax'
+  is_instance 'time_entries', 'TimeEntry'
+  is_instance 'contractors', 'Contractor'
+  is_instance 'default_terms', 'DefaultTerms'
+  is_instance 'reports', 'Report'
+  is_instance 'currency', 'Currency'
+  is_instance 'email_templates', 'EmailTemplate'
 
   describe '#to_request' do
     it 'creates valid API request XML' do
