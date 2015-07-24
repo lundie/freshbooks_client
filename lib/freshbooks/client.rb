@@ -1,10 +1,10 @@
 require 'multi_xml'
+require 'faraday'
 
 module Freshbooks
   class Client
     attr_accessor :oauth_token
     attr_accessor :method
-    attr_accessor :params
 
     def initialize(options = {})
       options.each do |key, value|
@@ -12,6 +12,13 @@ module Freshbooks
       end
 
       yield(self) if block_given?
+    end
+
+    # Send post request to the API.
+    #
+    # @return HTTP request
+    def post
+      # faraday connection
     end
 
     def self.to_xml(params_hash = {})
