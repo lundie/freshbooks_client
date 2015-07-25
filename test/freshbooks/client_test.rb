@@ -17,7 +17,7 @@ describe Freshbooks::Client do
   is_instance 'clients',         'Client'
   is_instance 'estimates',       'Estimate'
   is_instance 'expenses',        'Expense'
-  is_instance 'gateways',         'Gateway'
+  is_instance 'gateways',        'Gateway'
   is_instance 'invoices',        'Invoice'
   is_instance 'items',           'Item'
   is_instance 'languages',       'Language'

@@ -92,8 +92,9 @@ module Freshbooks
     #
     # @param xml_content [String] A string of XML to be parsed.
     #
-    # @return [Hash] 
+    # @return [Hash] A hash of the converted XML response.
     def parse(xml_content)
+      MultiXml.parser = :nokogiri
       MultiXml.parse(xml_content)['response']
     end
 
