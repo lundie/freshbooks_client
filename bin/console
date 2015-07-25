@@ -10,5 +10,14 @@ require "freshbooks"
 # require "pry"
 # Pry.start
 
-require "irb"
-IRB.start
+require "pry"
+require "dotenv"
+
+Dotenv.load
+
+@client = Freshbooks::Client.new do |config|
+  config.api_url = ENV['BASE_URL']
+  config.token = ENV['TOKEN']
+end
+
+Pry.start

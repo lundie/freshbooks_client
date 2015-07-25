@@ -8,26 +8,14 @@ module Freshbooks
       #
       # @param params [Hash] a hash of params to create a callback
       def create(params = {})
-        post(
-          method: 'callback.create',
-          callback: {
-            event: params.fetch(:event),
-            uri: params.fetch(:uri)
-          }
-        )
+        call('callback.create', [:event, :uri], params)
       end
 
       # Verifies a callback using a unique verification code.
       #
       # @param params [Hash] a hash of params to verify a callback
       def verify(params = {})
-        post(
-          method: 'callback.verify',
-          callback: {
-            callback_id: params.fetch(:callback_id),
-            verifier: params.fetch(:verifier)
-          }
-        )
+        call('callback.verify', [:callback_id, :verifier], params)
       end
     end
   end

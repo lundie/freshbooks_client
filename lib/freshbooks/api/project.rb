@@ -2,8 +2,7 @@ module Freshbooks
   module API
     class Project < Freshbooks::Client
       def list(params = {})
-        params[:method] = 'project.list'
-        post(params).projects.project
+        call('project.list', [:method], params)
       end
     end
   end

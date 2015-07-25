@@ -28,9 +28,35 @@ module Freshbooks
       yield(self) if block_given?
     end
 
-    # @return [Freshbooks::API::Project]
-    def projects
-      Freshbooks::API::Project.new(options)
+    include Freshbooks::API::Methods
+
+    # Makes an API call via the #post method.
+    #
+    # @param method [String] The API method as defined in the Freshbooks API docs.
+    # @param struct [Array] All required parameters for the request.
+    # @param params [Hash] The parameters passed to the request.
+    #
+    # @example Create a callback.
+    #   call('callback.create', [:event, :uri], {event: 'Foo', uri: 'https://jesse.codes/'})
+    #   # => {...}
+    #
+    # @return [Hash] An API request hash.
+    def call(method, struct = [], params = {})
+      body_key = method.split('.').first.to_sym
+      body = {}
+      unless params.empty?
+        struct.each do |p|
+          body[p] = params.fetch(p)
+          params.delete(p)
+        end
+
+        body.merge(params) unless params.empty?
+      end
+
+      post_body = {method: method}
+      post_body.merge(body) unless body.empty?
+
+      post(post_body)
     end
 
     # Send post request to the API.

@@ -1,4 +1,5 @@
 require 'freshbooks/version'
+require 'freshbooks/api/methods'
 require 'freshbooks/client'
 require 'freshbooks/api/callback'
 require 'freshbooks/api/category'
