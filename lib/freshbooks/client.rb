@@ -3,7 +3,19 @@ require 'faraday'
 require 'faraday_middleware'
 require 'hashie'
 
+# Namespace for all methods, attributes, and classes used to
+# wrap the Freshbooks API.
 module Freshbooks
+  # Superclass that contains all logic and methods needed to send
+  # and parse XML from the Freshbooks API.
+  #
+  # @author Jesse Herrick
+  # @abstract
+  # @since 0.1.0
+  #
+  # @attr [String] token auth token provided by Freshbooks
+  # @attr [String] api_url the base URL of the API endpoint provided
+  #                by Freshbooks
   class Client
     attr_accessor :token
     attr_accessor :api_url
@@ -16,6 +28,7 @@ module Freshbooks
       yield(self) if block_given?
     end
 
+    # @return [Freshbooks::API::Project]
     def projects
       Freshbooks::API::Project.new(options)
     end
@@ -31,10 +44,17 @@ module Freshbooks
         conn.adapter Faraday.default_adapter
       end
 
-      @connection.post do |req|
+      resp = @connection.post do |req|
         req.url '/api/2.1/xml-in'
         req.headers['Content-Type'] = 'application/xml'
         req.body = to_request(body)
+      end
+
+      body = resp.body.response
+      if body.empty?
+        resp.status
+      else
+        body
       end
     end
 
@@ -85,6 +105,9 @@ module Freshbooks
       built
     end
 
+    # Generates a hash of options to pass to {Freshbooks::Client}.
+    #
+    # @return [Hash] a hash of options.
     def options
       {
         api_url: @api_url,
