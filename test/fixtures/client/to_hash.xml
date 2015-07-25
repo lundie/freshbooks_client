@@ -1,6 +1,4 @@
 <?xml version="1.0"?>
 <response xmlns="http://www.freshbooks.com/api/" status="ok">
-  <foo>
-    bar
-  </foo>
+  <foo>bar</foo>
 </response>

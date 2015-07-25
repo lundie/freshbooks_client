@@ -40,6 +40,10 @@ module Freshbooks
     #   call('callback.create', [:event, :uri], {event: 'Foo', uri: 'https://jesse.codes/'})
     #   # => {...}
     #
+    # @example List projects.
+    #   call('project.list')
+    #   # => {...}
+    #
     # @return [Hash] An API request hash.
     def call(method, struct = [], params = {})
       body_key = method.split('.').first.to_sym
@@ -90,7 +94,7 @@ module Freshbooks
     #
     # @return [Hash] 
     def parse(xml_content)
-      MultiXml.parse(xml_content)['response'].map { |tags| tags.map { |tag| tag.is_a?(String) ? tag.strip : tag } }.to_h
+      MultiXml.parse(xml_content)['response']
     end
 
     # Converts a data hash into a usable Freshbooks API XML request.

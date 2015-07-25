@@ -29,7 +29,7 @@ end
 def is_instance(meth, inst)
   describe "##{meth}" do
     it "should return a Freshbooks::API::#{inst} instance" do
-      assert @client.projects.is_a?(eval("Freshbooks::API::#{inst}"))
+      assert_instance_of eval("Freshbooks::API::#{inst}"), @client.send(meth.to_sym)
     end
   end
 end
