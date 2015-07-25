@@ -58,6 +58,11 @@ module Freshbooks
       end
     end
 
+    # Parses XML response into a hash.
+    #
+    # @param xml_content [String] A string of XML to be parsed.
+    #
+    # @return [Hash] 
     def parse(xml_content)
       MultiXml.parse(xml_content)['response'].map { |tags| tags.map { |tag| tag.is_a?(String) ? tag.strip : tag } }.to_h
     end

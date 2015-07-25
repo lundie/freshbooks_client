@@ -6,6 +6,9 @@ require 'minitest/reporters'
 
 Minitest::Reporters.use!(Minitest::Reporters::DefaultReporter.new(color: true))
 
+require 'coveralls'
+Coveralls.wear!
+
 def fixtures_path
   File.expand_path('../fixtures', __FILE__)
 end

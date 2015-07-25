@@ -1,36 +1,9 @@
-# Freshbooks
+# Freshbooks API Client
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/freshbooks`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
-
-## Installation
-
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'freshbooks'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install freshbooks
-
-## Usage
-
-TODO: Write usage instructions here
-
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/freshbooks.
-
+![Inch
+Documentation](http://inch-ci.org/github/littlelines/freshbooks_client.svg?branch=master)
+[![Build Status](http://img.shields.io/travis/littlelines/freshbooks_client.svg)](https://travis-ci.org/littlelines/freshbooks_client)
+[![Dependency Status](http://img.shields.io/gemnasium/littlelines/freshbooks_client.svg)](https://gemnasium.com/littlelines/freshbooks_client)
+[![Code Climate](http://img.shields.io/codeclimate/github/littlelines/freshbooks_client.svg)](https://codeclimate.com/github/littlelines/freshbooks_client)
+[![Gem Version](http://img.shields.io/gem/v/freshbooks_client.svg)](https://rubygems.org/gems/freshbooks_client)
+[![Badges](http://img.shields.io/:badges-5/5-ff6799.svg)](https://github.com/badges/badgerbadgerbadger)
