@@ -1,5 +1,6 @@
 module Freshbooks
   module API
+    # Methods for CRUD in [Freshbooks::Client].
     module CRUD
       # Creates something based on params.
       #

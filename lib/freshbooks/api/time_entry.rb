@@ -1,7 +1,8 @@
 module Freshbooks
   module API
+    # http://www.freshbooks.com/developers/docs/time-entries
     class TimeEntry < Freshbooks::Client
-      # do stuff
+      # CRUD
     end
   end
 end

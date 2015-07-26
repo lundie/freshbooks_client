@@ -1,16 +1,8 @@
 module Freshbooks
   module API
+    # http://www.freshbooks.com/developers/docs/gateway
     class Gateway < Freshbooks::Client
-      # only listing
-
-      def no_crud
-        abort "Sorry, this endpoint only has a listing action."
-      end
-
-      alias_method :create, :no_crud
-      alias_method :get, :no_crud
-      alias_method :update, :no_crud
-      alias_method :delete, :no_crud
+      include Freshbooks::API::NoCRUD
     end
   end
 end

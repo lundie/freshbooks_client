@@ -25,7 +25,7 @@ module Freshbooks
         instance_variable_set("@#{key}", value)
       end
 
-      @endpoint = self.class.to_s.split('::').last.downcase
+      @endpoint = underscore(self.class.to_s.split('::').last)
 
       yield(self) if block_given?
     end
@@ -151,6 +151,19 @@ module Freshbooks
         api_url: @api_url,
         token: @token
       }
+    end
+
+    # Converts a CamelCased word with an underscored_one.
+    #
+    # @param camel_cased_word [String] A string to underscore.
+    #
+    # @return An underscored string.
+    def underscore(camel_cased_word)
+      camel_cased_word.gsub(/::/, '/').
+      gsub(/([A-Z]+)([A-Z][a-z])/,'\1_\2').
+      gsub(/([a-z\d])([A-Z])/,'\1_\2').
+      tr("-", "_").
+      downcase
     end
   end
 end

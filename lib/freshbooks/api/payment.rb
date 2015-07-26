@@ -1,7 +1,8 @@
 module Freshbooks
   module API
+    # http://www.freshbooks.com/developers/docs/payments
     class Payment < Freshbooks::Client
-      # do stuff
+      # CRUD
     end
   end
 end

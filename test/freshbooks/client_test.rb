@@ -63,5 +63,12 @@ describe Freshbooks::Client do
       actual = @client.parse fixture('client/nested.xml')
       assert_equal expected, actual
     end
+
+  end
+
+  describe '#underscore' do
+    it 'underscores a camel cased word' do
+      assert_equal 'camel_case', @client.underscore('CamelCase')
+    end
   end
 end
