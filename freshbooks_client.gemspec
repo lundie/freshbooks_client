@@ -18,6 +18,7 @@ Gem::Specification.new do |spec|
 
   # spec.add_runtime_dependency "virtus"
   spec.add_runtime_dependency "multi_xml", "~> 0.5.5"
+  spec.add_runtime_dependency "nokogiri", "~> 1.6.6"
   spec.add_runtime_dependency "hashie", "~> 3.4.2"
   spec.add_runtime_dependency "faraday_middleware", "~> 0.10.0"
 
