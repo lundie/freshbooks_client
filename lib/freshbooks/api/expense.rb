@@ -1,7 +1,7 @@
 module Freshbooks
   module API
     class Expense < Freshbooks::Client
-      # do stuff
+      # CRUD
     end
   end
 end

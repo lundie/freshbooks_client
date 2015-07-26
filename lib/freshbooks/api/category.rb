@@ -1,7 +1,7 @@
 module Freshbooks
   module API
     class Category < Freshbooks::Client
-      # do stuff
+      # CRUD
     end
   end
 end

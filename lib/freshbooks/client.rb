@@ -25,10 +25,13 @@ module Freshbooks
         instance_variable_set("@#{key}", value)
       end
 
+      @endpoint = self.class.to_s.split('::').last.downcase
+
       yield(self) if block_given?
     end
 
     include Freshbooks::API::Methods
+    include Freshbooks::API::CRUD
 
     # Makes an API call via the #post method.
     #
@@ -45,20 +48,19 @@ module Freshbooks
     #   # => {...}
     #
     # @return [Hash] An API request hash.
-    def call(method, struct = [], params = {})
-      body_key = method.split('.').first.to_sym
-      body = {}
-      unless params.empty?
-        struct.each do |p|
-          body[p] = params.fetch(p)
-          params.delete(p)
-        end
-
-        body.merge(params) unless params.empty?
-      end
+    def call(method, params = {})
+      # unless params.empty?
+      #   # ensure that params definied in the struct exist
+      #   struct.each do |p|
+      #     body[p] = params.fetch(p)
+      #     params.delete(p)
+      #   end
+      #
+      #   body.merge(params) unless params.empty?
+      # end
 
       post_body = {method: method}
-      post_body.merge(body) unless body.empty?
+      post_body = post_body.merge(params) unless params.empty?
 
       post(post_body)
     end
