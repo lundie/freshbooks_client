@@ -29,20 +29,6 @@ describe Freshbooks::Client do
   is_instance 'currencies',      'Currency'
   is_instance 'email_templates', 'EmailTemplate'
 
-  describe '#call' do
-    it 'should be a more simplified version of #post' do
-      actual = @client.call('project.list')
-      assert_instance_of Hashie::Mash, actual
-    end
-  end
-
-  describe '#post' do
-    it 'should return a mapped hash from an API request' do
-      actual = @client.post(method: 'project.list')
-      assert_instance_of Hashie::Mash, actual
-    end
-  end
-
   describe '#to_request' do
     it 'creates valid API request XML' do
       expected = remove_xml_whitespace fixture('client/api_req.xml')
