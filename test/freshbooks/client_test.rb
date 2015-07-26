@@ -1,14 +1,7 @@
 require 'test_helper'
 
 describe Freshbooks::Client do
-  before do
-    @base_url = load_env['BASE_URL']
-    @token = load_env['TOKEN']
-    @client = Freshbooks::Client.new do |config|
-      config.api_url = @base_url
-      config.token = @token
-    end
-  end
+  setup_client
 
   # see test_helper
   # checks to see if client.:first_param returns an instance of :second_param
@@ -35,6 +28,20 @@ describe Freshbooks::Client do
   is_instance 'reports',         'Report'
   is_instance 'currencies',      'Currency'
   is_instance 'email_templates', 'EmailTemplate'
+
+  describe '#call' do
+    it 'should be a more simplified version of #post' do
+      actual = @client.call('project.list')
+      assert_instance_of Hashie::Mash, actual
+    end
+  end
+
+  describe '#post' do
+    it 'should return a mapped hash from an API request' do
+      actual = @client.post(method: 'project.list')
+      assert_instance_of Hashie::Mash, actual
+    end
+  end
 
   describe '#to_request' do
     it 'creates valid API request XML' do

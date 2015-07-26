@@ -15,12 +15,27 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
 ]
 SimpleCov.start
 
+def setup_client
+  before do
+    @base_url = load_env['BASE_URL']
+    @token = load_env['TOKEN']
+    @client = Freshbooks::Client.new do |config|
+      config.api_url = @base_url
+      config.token = @token
+    end
+  end
+end
+
 def fixtures_path
   File.expand_path('../fixtures', __FILE__)
 end
 
 def fixture(file)
   File.read(fixtures_path + '/' + file)
+end
+
+def api_fixture(file)
+  fixture('api' + '/' + file)
 end
 
 def remove_xml_whitespace(xml)
