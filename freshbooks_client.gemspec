@@ -16,7 +16,6 @@ Gem::Specification.new do |spec|
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   spec.require_paths = ["lib"]
 
-  # spec.add_runtime_dependency "virtus"
   spec.add_runtime_dependency "multi_xml", "~> 0.5.5"
   spec.add_runtime_dependency "nokogiri", "~> 1.6.6"
   spec.add_runtime_dependency "hashie", "~> 3.4.2"
