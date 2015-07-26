@@ -1,7 +1,22 @@
 require 'test_helper'
 
 describe Freshbooks::Client do
-  setup_client
+  before do
+    @client = Freshbooks::Client.new(client_options)
+  end
+
+  it 'can be initialized through a hash' do
+    client = Freshbooks::Client.new(client_options)
+    assert_instance_of Freshbooks::Client, client
+  end
+
+  it 'can be initialized through a block' do
+    client = Freshbooks::Client.new do |config|
+      config.api_url = client_options[:api_url]
+      config.token = client_options[:token]
+    end
+    assert_instance_of Freshbooks::Client, client
+  end
 
   # see test_helper
   # checks to see if client.:first_param returns an instance of :second_param

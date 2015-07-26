@@ -15,15 +15,11 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
 ]
 SimpleCov.start
 
-def setup_client
-  before do
-    @base_url = load_env['BASE_URL']
-    @token = load_env['TOKEN']
-    @client = Freshbooks::Client.new do |config|
-      config.api_url = @base_url
-      config.token = @token
-    end
-  end
+def client_options
+  {
+    api_url: load_env['BASE_URL'],
+    token: load_env['TOKEN']
+  }
 end
 
 def fixtures_path
