@@ -6,7 +6,7 @@ module Freshbooks
 
       # Returns the specified invoice in PDF format.
       def get_pdf(params = {})
-        call('invoice.getPDF', params)
+        call('invoice.getPDF', params.merge(pdf: true))
       end
 
       # Send an existing invoice to your client via e-mail.
