@@ -71,7 +71,7 @@ module Freshbooks
     def post(body)
       @connection = Faraday.new(@api_url) do |conn|
         conn.use FaradayMiddleware::Mashify
-        conn.response :xml unless body[:pdf]
+        conn.response :xml unless body.delete(:pdf)
         conn.basic_auth @token, 'X'
         conn.adapter Faraday.default_adapter
       end
@@ -82,7 +82,7 @@ module Freshbooks
         req.body = to_request(body)
       end
 
-      body = resp.body&.response || resp.body
+      body = resp.body.try(:response) || resp.body
       if body.empty?
         resp.status
       else
